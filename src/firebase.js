@@ -1,9 +1,10 @@
 import app from "firebase/app"
+import * as firebase from 'firebase'
 import "firebase/auth"
 import "firebase/database"
 
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -11,6 +12,6 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 }
 
-const firebase = app.initializeApp(config)
-
-export default firebase
+export const firebaseApp = app.initializeApp(config)
+export const auth = firebaseApp.auth()
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
