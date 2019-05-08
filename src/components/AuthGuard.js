@@ -19,7 +19,7 @@ const AuthGuard = ({ children }) => {
   }
 
   if(user) {
-    return <div user={user}>{children}</div>
+    return (children)
   }
 }
 
