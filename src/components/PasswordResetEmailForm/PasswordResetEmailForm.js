@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { auth } from "../firebase"
+import { auth } from "../../firebase"
 
-const PasswordResetEmailForm = () => {
+export const PasswordResetEmailForm = () => {
   const [email, setEmail] = useState("")
   const [sentSuccess, setSentSuccess] = useState(false)
   const [error, setError] = useState(null)
@@ -30,5 +30,3 @@ const PasswordResetEmailForm = () => {
     </form>
   )
 }
-
-export default PasswordResetEmailForm

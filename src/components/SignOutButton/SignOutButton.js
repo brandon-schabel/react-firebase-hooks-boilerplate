@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { auth } from "../firebase"
+import { auth } from "../../firebase"
 
-const SignOutButton = () => {
+export const SignOutButton = () => {
   const { initialising, user } = useAuthState(auth)
   const logout = () => auth.signOut()
 
@@ -14,5 +14,3 @@ const SignOutButton = () => {
     )
   }
 }
-
-export default SignOutButton

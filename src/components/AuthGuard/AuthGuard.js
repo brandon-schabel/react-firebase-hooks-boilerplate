@@ -1,8 +1,8 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { auth } from "../firebase"
+import { auth } from "../../firebase"
 
-const AuthGuard = ({ children }) => {
+export const AuthGuard = ({ children }) => {
   const { initialising, user } = useAuthState(auth)
   if (initialising) {
     return (
@@ -12,15 +12,11 @@ const AuthGuard = ({ children }) => {
     )
   }
 
-  if(!user) {
-    return (
-      <div>Sorry plz login</div>
-    )
+  if (!user) {
+    return <div>Sorry plz login</div>
   }
 
-  if(user) {
-    return (children)
+  if (user) {
+    return children
   }
 }
-
-export default AuthGuard

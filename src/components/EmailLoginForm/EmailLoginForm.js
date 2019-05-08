@@ -1,9 +1,9 @@
 import React, { useState } from "react"
-import { auth } from "../firebase"
-import PasswordResetEmailForm from "./PasswordResetEmailForm"
+import { auth } from "../../firebase"
+import { PasswordResetEmailForm } from "../"
 
 //ToDo: convert to real form
-const EmailLoginForm = () => {
+export const EmailLoginForm = () => {
   const [email, setEmail] = useState("")
   const [pass, setPass] = useState("")
 
@@ -22,5 +22,3 @@ const EmailLoginForm = () => {
     </div>
   )
 }
-
-export default EmailLoginForm

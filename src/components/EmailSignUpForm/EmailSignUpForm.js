@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { auth } from "../firebase"
+import { auth } from "../../firebase"
 
-const EmailLoginForm = () => {
+// ToDo convert to form and handle error, and succesfful login, redirect
+export const EmailSignUpForm = () => {
   const [email, setEmail] = useState("")
   const [pass, setPass] = useState("")
   const [confirmPass, setConfirmPass] = useState("")
@@ -19,5 +20,3 @@ const EmailLoginForm = () => {
     </div>
   )
 }
-
-export default EmailLoginForm

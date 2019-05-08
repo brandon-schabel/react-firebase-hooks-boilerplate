@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { auth, firebaseApp } from "../firebase"
+import { auth } from "../../firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 
-const ChangePassword = () => {
+export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
   const [confirmNewPass, setConfirmNewPass] = useState("")
   const { initialising, user } = useAuthState(auth)
@@ -36,4 +36,4 @@ const ChangePassword = () => {
   )
 }
 
-export default ChangePassword
+
