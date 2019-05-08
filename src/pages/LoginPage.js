@@ -15,6 +15,7 @@ const LoginPage = () => {
       </div>
     )
   }
+  
   if (user) {
     return (
       <div>
