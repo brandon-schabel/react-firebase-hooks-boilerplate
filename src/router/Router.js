@@ -1,11 +1,10 @@
 import React from "react"
 import { Switch, Route, Link } from "react-router-dom"
 import * as ROUTES from "../constants/routes.js"
-import Home from "../pages/Home"
-import LoginPage from "../pages/LoginPage"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../firebase"
-import Profile from '../pages/Profile'
+
+import { Home, LoginPage, Profile, PassResetPage } from "../pages"
 
 const Router = () => {
   const { initialising, user } = useAuthState(auth)
@@ -14,11 +13,12 @@ const Router = () => {
     return (
       <Switch>
         <Route exact path={ROUTES.SIGN_IN} component={LoginPage} />
+        <Route exact path={ROUTES.PASSWORD_RESET} component={PassResetPage} />
       </Switch>
     )
   }
 
-  if(user) {
+  if (user) {
     return (
       <Switch>
         <Route exact path={ROUTES.LANDING} component={Home} />
