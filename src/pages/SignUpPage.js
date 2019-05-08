@@ -3,9 +3,9 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../firebase"
 import SignOutButton from '../components/SignOutButton'
 import GoogleLoginButton from '../components/GoogleLoginButton'
-import EmailLoginForm from '../components/EmailLoginForm'
+import EmailSignUpForm from '../components/EmailSignUpForm'
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const { initialising, user } = useAuthState(auth)
 
   if (initialising) {
@@ -26,11 +26,11 @@ const LoginPage = () => {
   }
   return (
     <div>
-      <EmailLoginForm></EmailLoginForm>
+      <EmailSignUpForm></EmailSignUpForm>
       
       <GoogleLoginButton></GoogleLoginButton>
     </div>
   )
 }
 
-export default LoginPage
+export default SignUpPage
