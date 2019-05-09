@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { auth } from "../../firebase"
 
-export const PasswordResetEmailForm = () => {
+export const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
   const [sentSuccess, setSentSuccess] = useState(false)
   const [error, setError] = useState(null)

@@ -1,14 +1,11 @@
 import React from "react"
-import {LoginPage, SignUpPage} from './pages'
-import Router from './router/Router'
-
+import Router from "./router/Router"
+import { Nav } from "./components"
 const App = () => {
   return (
     <div>
-      <LoginPage />
-      <SignUpPage></SignUpPage>
-      <Router></Router>
-      test
+      <Nav />
+      <Router />
     </div>
   )
 }

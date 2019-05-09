@@ -4,7 +4,7 @@ import * as ROUTES from "../constants/routes.js"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../firebase"
 
-import { Home, LoginPage, Profile, PasswordResetPage } from "../pages"
+import { Home, LoginPage, Profile, ForgotPasswordPage } from "../pages"
 
 const Router = () => {
   const { initialising, user } = useAuthState(auth)
@@ -13,7 +13,11 @@ const Router = () => {
     return (
       <Switch>
         <Route exact path={ROUTES.SIGN_IN} component={LoginPage} />
-        <Route exact path={ROUTES.PASSWORD_RESET} component={PasswordResetPage} />
+        <Route
+          exact
+          path={ROUTES.FORGOT_PASSWORD}
+          component={ForgotPasswordPage}
+        />
       </Switch>
     )
   }

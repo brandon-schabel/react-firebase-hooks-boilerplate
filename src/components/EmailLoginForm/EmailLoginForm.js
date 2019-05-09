@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { auth } from "../../firebase"
-import { PasswordResetEmailForm } from "../"
-
+import { Link } from "react-router-dom"
+import * as ROUTES from '../../constants/routes'
 //ToDo: convert to real form
 export const EmailLoginForm = () => {
   const [email, setEmail] = useState("")
@@ -18,7 +18,7 @@ export const EmailLoginForm = () => {
         onChange={e => setPass(e.target.value)}
       />
       <button onClick={login}>Log in</button>
-      <PasswordResetEmailForm />
+      <Link to={ROUTES.FORGOT_PASSWORD}>Forgot Password</Link>
     </div>
   )
 }

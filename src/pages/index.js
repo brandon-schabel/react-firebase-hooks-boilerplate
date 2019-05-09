@@ -1,7 +1,7 @@
 import { Home } from "./Home"
+import { ForgotPasswordPage } from "./ForgotPasswordPage"
 import { LoginPage } from "./LoginPage"
-import { PasswordResetPage } from "./PasswordResetPage"
 import { Profile } from "./Profile"
 import { SignUpPage } from "./SignUpPage"
 
-export { Home, LoginPage, PasswordResetPage, Profile, SignUpPage }
+export { Home, ForgotPasswordPage, LoginPage, Profile, SignUpPage }
