@@ -3,14 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../firebase"
 
 export const AuthGuard = ({ children }) => {
-  const { initialising, user } = useAuthState(auth)
-  if (initialising) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    )
-  }
+  const { user } = useAuthState(auth)
 
   if (!user) {
     return <div>Sorry plz login</div>

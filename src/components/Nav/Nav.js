@@ -24,7 +24,7 @@ const NotAuthenticated = () => {
 }
 
 export const Nav = () => {
-  const { initialising, user } = useAuthState(auth)
+  const { user } = useAuthState(auth)
 
   if (user) return <Authenticated />
 

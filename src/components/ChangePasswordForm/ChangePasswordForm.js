@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
   const [confirmNewPass, setConfirmNewPass] = useState("")
-  const { initialising, user } = useAuthState(auth)
+  const { user } = useAuthState(auth)
 
   const enabled = !(newPass.length > 5 && newPass === confirmNewPass)
 

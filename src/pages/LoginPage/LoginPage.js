@@ -9,16 +9,8 @@ import {
 } from "../../components"
 
 export const LoginPage = () => {
-  const { initialising, user } = useAuthState(auth)
-
-  if (initialising) {
-    return (
-      <div>
-        <p>Initialising User...</p>
-      </div>
-    )
-  }
-
+  const { user } = useAuthState(auth)
+  
   if (user) {
     return (
       <div>

@@ -1,10 +1,10 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../firebase"
-import { AuthGuard, ChangePasswordForm, CreatePost, ViewPosts} from "../../components"
+import { ChangePasswordForm, CreatePost, ViewPosts} from "../../components"
 
 export const Profile = () => {
-  const { initialising, user } = useAuthState(auth)
+  const { user } = useAuthState(auth)
 
   return (
     <div>

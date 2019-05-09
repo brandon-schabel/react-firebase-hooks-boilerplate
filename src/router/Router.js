@@ -1,34 +1,44 @@
 import React from "react"
-import { Switch, Route, Link } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 import * as ROUTES from "../constants/routes.js"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../firebase"
 
-import { Home, LoginPage, Profile, ForgotPasswordPage } from "../pages"
+import {
+  Home,
+  LoginPage,
+  SignUpPage,
+  Profile,
+  ForgotPasswordPage
+} from "../pages"
 
 const Router = () => {
   const { initialising, user } = useAuthState(auth)
+  if (initialising) {
+    return <div>Loading...</div>
+  } else {
+    if (!user) {
+      return (
+        <Switch>
+          <Route exact path={ROUTES.SIGN_IN} component={LoginPage} />
+          <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
+          <Route
+            exact
+            path={ROUTES.FORGOT_PASSWORD}
+            component={ForgotPasswordPage}
+          />
+        </Switch>
+      )
+    }
 
-  if (!user) {
-    return (
-      <Switch>
-        <Route exact path={ROUTES.SIGN_IN} component={LoginPage} />
-        <Route
-          exact
-          path={ROUTES.FORGOT_PASSWORD}
-          component={ForgotPasswordPage}
-        />
-      </Switch>
-    )
-  }
-
-  if (user) {
-    return (
-      <Switch>
-        <Route exact path={ROUTES.LANDING} component={Home} />
-        <Route exact path={ROUTES.PROFILE} component={Profile} />
-      </Switch>
-    )
+    if (user) {
+      return (
+        <Switch>
+          <Route exact path={ROUTES.LANDING} component={Home} />
+          <Route exact path={ROUTES.PROFILE} component={Profile} />
+        </Switch>
+      )
+    }
   }
 }
 
