@@ -1,12 +1,14 @@
 import React from "react"
 import { useCollection } from "react-firebase-hooks/firestore"
-import { db } from "../../firebase"
+import { collections } from "../../firebase"
 
 export const ViewPosts = () => {
-  const { error, loading, value } = useCollection(db.collection("posts"))
+  const { error, loading, value } = useCollection(collections.posts)
 
   return (
     <div>
+      {error && <strong>Error: {error}</strong>}
+      {loading && <span>Collection: Loading...</span>}
       {value && (
         <div>
           {value.docs.map(doc => (

@@ -1,5 +1,5 @@
 import app from "firebase/app"
-import * as firebase from 'firebase'
+import * as firebase from "firebase"
 import "firebase/auth"
 import "firebase/database"
 
@@ -17,3 +17,7 @@ export const firebaseApp = app.initializeApp(config)
 export const auth = firebaseApp.auth()
 export const db = firebaseApp.firestore()
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
+
+export const collections = {
+  posts: db.collection("posts")
+}
