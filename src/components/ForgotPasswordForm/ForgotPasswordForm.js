@@ -5,7 +5,7 @@ export const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
   const [sentSuccess, setSentSuccess] = useState(false)
   const [error, setError] = useState(null)
-  
+
   const handleSendEmail = event => {
     event.preventDefault()
 
@@ -14,19 +14,19 @@ export const ForgotPasswordForm = () => {
       .then(() => {
         setSentSuccess(true)
       })
-      .catch(e => {
-        setError(e)
+      .catch(error => {
+        setError(error)
       })
   }
 
   return (
     <form onSubmit={handleSendEmail}>
+      {error && <div>Error: {error.message}</div>}
       {sentSuccess && (
         <div>Please check your email for a password reset link</div>
       )}
-      {error && <div>Sorry there was an error: {JSON.stringify(error)}</div>}
       <input value={email} onChange={e => setEmail(e.target.value)} />
-      <input type="submit" disable={sentSuccess} value="Submit" />
+      <input type="submit" disabled={sentSuccess} value="Submit" />
     </form>
   )
 }
