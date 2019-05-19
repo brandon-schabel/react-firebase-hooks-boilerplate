@@ -1,7 +1,6 @@
 import app from "firebase/app"
-import * as firebase from "firebase"
-import "firebase/auth"
-import "firebase/database"
+import 'firebase/auth'
+import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,9 +13,10 @@ const config = {
 }
 
 export const firebaseApp = app.initializeApp(config)
+
 export const auth = firebaseApp.auth()
 export const db = firebaseApp.firestore()
-export const googleProvider = new firebase.auth.GoogleAuthProvider()
+export const googleProvider = new app.auth.GoogleAuthProvider()
 
 export const collections = {
   posts: db.collection("posts")
