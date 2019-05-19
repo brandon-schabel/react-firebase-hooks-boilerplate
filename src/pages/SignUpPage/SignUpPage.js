@@ -1,5 +1,6 @@
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+
 import { auth } from "../../firebase"
 import {
   SignOutButton,
@@ -8,7 +9,7 @@ import {
 } from "../../components"
 
 export const SignUpPage = () => {
-  const { user } = useAuthState(auth)
+  const [user] = useAuthState(auth)
 
   if (user) {
     return (

@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useAuthState } from "react-firebase-hooks/auth"
+
 import * as ROUTES from "../../constants/routes"
 import { SignOutButton } from "../"
-import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../firebase"
 
 const Authenticated = () => {
@@ -26,7 +27,7 @@ const NotAuthenticated = () => {
 }
 
 export const Nav = () => {
-  const { user } = useAuthState(auth)
+  const [user] = useAuthState(auth)
 
   if (user) return <Authenticated />
 

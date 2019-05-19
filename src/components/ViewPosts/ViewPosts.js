@@ -1,5 +1,6 @@
 import React from "react"
 import { useCollection } from "react-firebase-hooks/firestore"
+
 import { collections } from "../../firebase"
 
 export const ViewPosts = () => {

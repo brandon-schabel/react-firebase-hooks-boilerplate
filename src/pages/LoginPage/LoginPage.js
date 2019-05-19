@@ -1,4 +1,5 @@
 import React from "react"
+
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "../../firebase"
 
@@ -9,7 +10,7 @@ import {
 } from "../../components"
 
 export const LoginPage = () => {
-  const { user } = useAuthState(auth)
+  const [user] = useAuthState(auth)
   
   if (user) {
     return (

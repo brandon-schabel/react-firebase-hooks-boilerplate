@@ -1,14 +1,15 @@
 import React, { useState } from "react"
-import { auth } from "../../firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { Redirect } from "react-router-dom"
+
+import { auth } from "../../firebase"
 
 export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
   const [confirmNewPass, setConfirmNewPass] = useState("")
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [error, setError] = useState(null)
-  const { user } = useAuthState(auth)
+  const [user] = useAuthState(auth)
 
   const enabled = !(
     newPass.length > 5 &&
@@ -17,7 +18,6 @@ export const ChangePasswordForm = () => {
   )
 
   const handleChangePassword = event => {
-    // TODO: redirect on password change, or prompt success
     event.preventDefault()
     user
       .updatePassword(newPass)

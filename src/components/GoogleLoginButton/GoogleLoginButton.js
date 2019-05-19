@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { auth, googleProvider } from "../../firebase"
 import { Redirect } from "react-router-dom"
+
+import { auth, googleProvider } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
 
 export const GoogleLoginButton = () => {

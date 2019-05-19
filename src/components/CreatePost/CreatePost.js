@@ -1,12 +1,13 @@
 import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
+
 import { db, auth } from "../../firebase"
 import { AuthGuard } from ".."
 
 export const CreatePost = () => {
   const [text, setText] = useState("")
   const [error, setError] = useState(null)
-  const { user } = useAuthState(auth)
+  const [user] = useAuthState(auth)
 
   const handleSubmitPost = event => {
     event.preventDefault()

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
+import { Redirect, Link} from "react-router-dom"
+
 import { auth } from "../../firebase"
-import { Link } from "react-router-dom"
 import * as ROUTES from "../../constants/routes"
-import { Redirect } from "react-router-dom"
 
 export const EmailLoginForm = () => {
   const [email, setEmail] = useState("")

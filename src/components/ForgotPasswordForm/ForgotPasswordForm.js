@@ -1,7 +1,8 @@
 import React, { useState } from "react"
+import { Redirect } from "react-router-dom"
+
 import { auth } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
-import { Redirect } from "react-router-dom"
 
 export const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
