@@ -1,7 +1,6 @@
-import React from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
+import React, { useContext } from "react"
 
-import { auth } from "../../firebase"
+import { AuthContext } from "../../firebase"
 import {
   SignOutButton,
   GoogleLoginButton,
@@ -9,8 +8,9 @@ import {
 } from "../../components"
 
 export const SignUpPage = () => {
-  const [user] = useAuthState(auth)
 
+  const { user } = useContext(AuthContext)
+  console.log('signup')
   if (user) {
     return (
       <div>

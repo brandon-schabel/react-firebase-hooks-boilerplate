@@ -30,7 +30,7 @@ export const ChangePasswordForm = () => {
       .catch(error => setError(error))
   }
 
-  if (setFormSubmitted)
+  if (formSubmitted)
     return (
       <Redirect
         to={{

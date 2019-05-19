@@ -22,7 +22,7 @@ export const ForgotPasswordForm = () => {
       })
   }
 
-  if (setSentSuccess)
+  if (sentSuccess)
     return (
       <Redirect
         to={{
