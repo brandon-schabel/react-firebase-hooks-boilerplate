@@ -1,8 +1,9 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Switch, Route } from "react-router-dom"
+import { useAuthState } from "react-firebase-hooks/auth"
 
+import { auth } from "../firebase"
 import * as ROUTES from "../constants/routes.js"
-import { AuthContext } from "../firebase"
 import {
   Home,
   LoginPage,
@@ -12,7 +13,7 @@ import {
 } from "../pages"
 
 const Router = () => {
-  const { loading, user } = useContext(AuthContext)
+  const [user, loading] = useAuthState(auth)
   if (loading) {
     return <div>Loading...</div>
   } else {

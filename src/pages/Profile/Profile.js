@@ -1,10 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 
-import { AuthContext } from "../../firebase"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { auth } from "../../firebase"
 import { ChangePasswordForm, CreatePost, ViewPosts} from "../../components"
 
 export const Profile = () => {
-  const { user } = useContext(AuthContext)
+  const [user] = useAuthState(auth)
 
   return (
     <div>

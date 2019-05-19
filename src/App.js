@@ -1,18 +1,16 @@
 import React from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
 
 import Router from "./router/Router"
 import { Nav } from "./components"
-import { auth, AuthContext } from "./firebase"
+import { auth } from './firebase'
 
 const App = () => {
-  const [user, loading, error] = useAuthState(auth)
 
   return (
-    <AuthContext.Provider value={{ user, loading, error }}>
+    <div>
       <Nav />
       <Router />
-    </AuthContext.Provider>
+    </div>
   )
 }
 

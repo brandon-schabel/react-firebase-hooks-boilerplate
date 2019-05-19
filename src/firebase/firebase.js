@@ -1,4 +1,3 @@
-import { createContext } from "react"
 import app from "firebase/app"
 import * as firebase from "firebase"
 import "firebase/auth"
@@ -22,5 +21,3 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider()
 export const collections = {
   posts: db.collection("posts")
 }
-
-export const AuthContext = createContext({})
