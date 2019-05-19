@@ -8,7 +8,8 @@ export const EmailSignUpForm = () => {
   const [confirmPass, setConfirmPass] = useState("")
   const [error, setError] = useState(null)
 
-  const signUp = () => {
+  const handleSignUp = (event) => {
+    event.preventDefault()
     auth
       .createUserWithEmailAndPassword(email, pass)
       .then(response => {
@@ -21,7 +22,7 @@ export const EmailSignUpForm = () => {
 
   const enabled = !(pass.length > 5 && pass === confirmPass)
   return (
-    <div>
+    <form onSubmit={handleSignUp}>
       {error && <div>Error: {error.message}</div>}
       <input value={email} onChange={e => setEmail(e.target.value)} />
       <input
@@ -34,9 +35,7 @@ export const EmailSignUpForm = () => {
         value={confirmPass}
         onChange={e => setConfirmPass(e.target.value)}
       />
-      <button onClick={signUp} disabled={enabled}>
-        Sign Up
-      </button>
-    </div>
+      <input disabled={enabled} type="submit" value="Submit" />
+    </form>
   )
 }

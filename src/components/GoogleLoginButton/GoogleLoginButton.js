@@ -3,6 +3,7 @@ import { auth, googleProvider } from "../../firebase"
 
 export const GoogleLoginButton = () => {
   const [error, setError] = useState(null)
+  
   const signInGoogle = () => {
     auth
       .signInWithPopup(googleProvider)

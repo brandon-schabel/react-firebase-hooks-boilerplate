@@ -10,14 +10,17 @@ export const CreatePost = () => {
 
   const handleSubmitPost = event => {
     event.preventDefault()
-    db.collection("posts").add({
-      text,
-      userId: user.uid
-    }).then(response => {
-      console.log(response)
-    }).catch(error => {
-      setError(error)
-    })
+    db.collection("posts")
+      .add({
+        text,
+        userId: user.uid
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        setError(error)
+      })
   }
 
   return (
@@ -25,7 +28,7 @@ export const CreatePost = () => {
       {error && <div>Error Occured: {error}</div>}
       <form onSubmit={handleSubmitPost}>
         <input onChange={e => setText(e.target.value)} value={text} />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Create Post" />
       </form>
     </AuthGuard>
   )

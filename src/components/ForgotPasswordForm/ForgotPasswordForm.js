@@ -12,7 +12,7 @@ export const ForgotPasswordForm = () => {
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        setSentSuccess(true)
+        setSentSuccess(true) 
       })
       .catch(error => {
         setError(error)
@@ -26,7 +26,7 @@ export const ForgotPasswordForm = () => {
         <div>Please check your email for a password reset link</div>
       )}
       <input value={email} onChange={e => setEmail(e.target.value)} />
-      <input type="submit" disabled={sentSuccess} value="Submit" />
+      <input type="submit" value="Submit" disabled={sentSuccess} />
     </form>
   )
 }

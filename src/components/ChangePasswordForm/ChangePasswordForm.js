@@ -5,27 +5,33 @@ import { useAuthState } from "react-firebase-hooks/auth"
 export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
   const [confirmNewPass, setConfirmNewPass] = useState("")
+  const [formSubmitted, setFormSubmitted] = useState(false)
   const [error, setError] = useState(null)
   const { user } = useAuthState(auth)
 
-  const enabled = !(newPass.length > 5 && newPass === confirmNewPass)
+  const enabled = !(
+    newPass.length > 5 &&
+    newPass === confirmNewPass &&
+    !formSubmitted
+  )
 
-  const handlePasswordUpdate = () => {
-    // TODO: check current user password,
+  const handleChangePassword = event => {
     // TODO: redirect on password change, or prompt success
-    setNewPass('')
-    setConfirmNewPass('')
+    event.preventDefault()
     user
       .updatePassword(newPass)
       .then(response => {
+        setNewPass("")
+        setConfirmNewPass("")
+        setFormSubmitted(true)
         console.log(response)
       })
       .catch(error => setError(error))
   }
 
   return (
-    <div>
-      {error && <div>Error occured: {error} </div>}
+    <form onSubmit={handleChangePassword}>
+      {error && <div>Error occured: {error.message} </div>}
       <input
         type="password"
         value={newPass}
@@ -37,9 +43,7 @@ export const ChangePasswordForm = () => {
         onChange={e => setConfirmNewPass(e.target.value)}
       />
 
-      <button disabled={enabled} onClick={handlePasswordUpdate}>
-        Change Password
-      </button>
-    </div>
+      <input disabled={enabled} type="submit" value="Submit" />
+    </form>
   )
 }
