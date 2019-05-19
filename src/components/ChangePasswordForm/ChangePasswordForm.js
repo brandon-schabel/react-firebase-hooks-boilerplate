@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { auth } from "../../firebase"
 import { useAuthState } from "react-firebase-hooks/auth"
+import { Redirect } from "react-router-dom"
 
 export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
@@ -28,6 +29,16 @@ export const ChangePasswordForm = () => {
       })
       .catch(error => setError(error))
   }
+
+  if (setFormSubmitted)
+    return (
+      <Redirect
+        to={{
+          pathname: "/",
+          state: { status: "Successfully Changed Password" }
+        }}
+      />
+    )
 
   return (
     <form onSubmit={handleChangePassword}>
