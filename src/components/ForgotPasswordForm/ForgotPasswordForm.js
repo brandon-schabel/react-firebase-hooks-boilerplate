@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { auth } from "../../firebase"
+import * as ROUTES from "../../constants/routes"
+import { Redirect } from "react-router-dom"
 
 export const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
@@ -12,19 +14,26 @@ export const ForgotPasswordForm = () => {
     auth
       .sendPasswordResetEmail(email)
       .then(() => {
-        setSentSuccess(true) 
+        setSentSuccess(true)
       })
       .catch(error => {
         setError(error)
       })
   }
 
+  if (setSentSuccess)
+    return (
+      <Redirect
+        to={{
+          pathname: ROUTES.LANDING,
+          state: { status: "Please check your email for a password reset link" }
+        }}
+      />
+    )
+
   return (
     <form onSubmit={handleSendEmail}>
       {error && <div>Error: {error.message}</div>}
-      {sentSuccess && (
-        <div>Please check your email for a password reset link</div>
-      )}
       <input value={email} onChange={e => setEmail(e.target.value)} />
       <input type="submit" value="Submit" disabled={sentSuccess} />
     </form>

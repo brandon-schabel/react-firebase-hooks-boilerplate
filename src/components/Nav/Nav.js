@@ -8,6 +8,7 @@ import { auth } from "../../firebase"
 const Authenticated = () => {
   return (
     <div>
+      <Link to={ROUTES.LANDING}>Home</Link>
       <Link to={ROUTES.PROFILE}>Profile</Link>
       <SignOutButton />
     </div>
@@ -17,6 +18,7 @@ const Authenticated = () => {
 const NotAuthenticated = () => {
   return (
     <div>
+      <Link to={ROUTES.LANDING}>Home</Link>
       <Link to={ROUTES.SIGN_IN}>Sign In</Link>
       <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </div>
