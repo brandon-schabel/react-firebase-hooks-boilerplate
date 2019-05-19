@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
 
 import { auth } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
+import { HandleRedirect } from "../index"
 
 export const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
@@ -24,11 +24,9 @@ export const ForgotPasswordForm = () => {
 
   if (sentSuccess)
     return (
-      <Redirect
-        to={{
-          pathname: ROUTES.LANDING,
-          state: { status: "Please check your email for a password reset link" }
-        }}
+      <HandleRedirect
+        to={ROUTES.LANDING}
+        message={"Please check your e-mail for a password reset link."}
       />
     )
 

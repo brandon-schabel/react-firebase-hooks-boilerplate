@@ -1,35 +1,33 @@
 import React, { useState } from "react"
-import { Redirect, Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import { auth } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
+import { HandleRedirect } from "../index"
 
 export const EmailLoginForm = () => {
   const [email, setEmail] = useState("")
   const [pass, setPass] = useState("")
-  const [loginSuccess, setLoginSuccess] = useState("")
+  const [signInSuccess, setSignInSuccess] = useState(false)
   const [error, setError] = useState(null)
 
   const handleLogin = event => {
     event.preventDefault()
     auth
       .signInWithEmailAndPassword(email, pass)
-      .then(response => {
-        setLoginSuccess(true)
-        console.log(response)
+      .then(() => {
+        setSignInSuccess(true)
       })
       .catch(error => {
         setError(error)
       })
   }
 
-  if (loginSuccess)
+  if (signInSuccess)
     return (
-      <Redirect
-        to={{
-          pathname: ROUTES.LANDING,
-          state: { status: "Successfully Logged In" }
-        }}
+      <HandleRedirect
+        to={ROUTES.LANDING}
+        message={"Successfully Logged In"}
       />
     )
 

@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { Redirect } from "react-router-dom"
 
 import { auth } from "../../firebase"
+import { HandleRedirect } from "../index"
+import * as ROUTES from "../../constants/routes"
 
 export const ChangePasswordForm = () => {
   const [newPass, setNewPass] = useState("")
@@ -21,22 +22,19 @@ export const ChangePasswordForm = () => {
     event.preventDefault()
     user
       .updatePassword(newPass)
-      .then(response => {
+      .then(() => {
         setNewPass("")
         setConfirmNewPass("")
         setFormSubmitted(true)
-        console.log(response)
       })
       .catch(error => setError(error))
   }
 
   if (formSubmitted)
     return (
-      <Redirect
-        to={{
-          pathname: "/",
-          state: { status: "Successfully Changed Password" }
-        }}
+      <HandleRedirect
+        to={ROUTES.LANDING}
+        message={"Successfully changed password"}
       />
     )
 

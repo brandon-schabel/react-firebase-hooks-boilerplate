@@ -14,6 +14,7 @@ import {
 
 const Router = () => {
   const [user, loading] = useAuthState(auth)
+  
   if (loading) {
     return <div>Loading...</div>
   } else {

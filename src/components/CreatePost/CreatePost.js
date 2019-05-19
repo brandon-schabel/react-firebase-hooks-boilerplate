@@ -16,9 +16,7 @@ export const CreatePost = () => {
         text,
         userId: user.uid
       })
-      .then(response => {
-        console.log(response)
-      })
+      .then(() => {})
       .catch(error => {
         setError(error)
       })

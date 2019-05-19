@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
 
 import { auth } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
+import { HandleRedirect } from "../index"
 
 export const EmailSignUpForm = () => {
   const [email, setEmail] = useState("")
@@ -15,9 +15,8 @@ export const EmailSignUpForm = () => {
     event.preventDefault()
     auth
       .createUserWithEmailAndPassword(email, pass)
-      .then(response => {
+      .then(() => {
         setSignUpSuccess(true)
-        console.log(response)
       })
       .catch(error => {
         setError(error)
@@ -26,11 +25,9 @@ export const EmailSignUpForm = () => {
 
   if (signUpSuccess)
     return (
-      <Redirect
-        to={{
-          pathname: ROUTES.LANDING,
-          state: { status: "Successfully Signed Up" }
-        }}
+      <HandleRedirect
+        to={ROUTES.LANDING}
+        message={"Successfully Signed Up"}
       />
     )
 

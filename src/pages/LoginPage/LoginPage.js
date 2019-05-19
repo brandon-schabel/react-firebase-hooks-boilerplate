@@ -20,6 +20,7 @@ export const LoginPage = () => {
       </div>
     )
   }
+  
   return (
     <div>
       <EmailLoginForm />

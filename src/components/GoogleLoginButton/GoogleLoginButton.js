@@ -1,8 +1,8 @@
 import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
 
 import { auth, googleProvider } from "../../firebase"
 import * as ROUTES from "../../constants/routes"
+import { HandleRedirect } from "../index"
 
 export const GoogleLoginButton = () => {
   const [loginSuccess, setLoginSuccess] = useState("")
@@ -11,9 +11,8 @@ export const GoogleLoginButton = () => {
   const signInGoogle = () => {
     auth
       .signInWithPopup(googleProvider)
-      .then(response => {
+      .then(() => {
         setLoginSuccess(true)
-        console.log(response)
       })
       .catch(error => {
         setError(error)
@@ -22,11 +21,9 @@ export const GoogleLoginButton = () => {
 
   if (loginSuccess)
     return (
-      <Redirect
-        to={{
-          pathname: ROUTES.LANDING,
-          state: { status: "Successfully Logged In With Google" }
-        }}
+      <HandleRedirect
+        to={ROUTES.LANDING}
+        message={"Successfully Logged In With Google"}
       />
     )
 
